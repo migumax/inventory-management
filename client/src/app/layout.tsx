@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import DashboardWrapper from "@/app/dashboardWrapper";
+import Script from "next/script"; /*for Dynatrace's RUM monitoring*/
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,6 +27,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <Script type="text/javascript" src="https://js-cdn.dynatrace.com/jstag/1944242a637/bf01048nky/c20fc60cc931af76_complete.js" crossorigin="anonymous"></Script>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
