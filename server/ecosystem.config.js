@@ -5,9 +5,9 @@ module.exports = {
         {
             name: "inventory-management",
             script: "npm",
-            args: "run dev",
+            args: "start",
             env: {
-                NODE_ENV: "development",
+                NODE_ENV: "production",
                 ENV_VAR1: "environment-variable",
             }
         }

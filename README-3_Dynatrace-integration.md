@@ -40,5 +40,8 @@ git add client/src/app/.
 git commit -m"integrated Dynatrace agentless rum"
 git push origin master
 ```
+5. Make sure that the new Deployment goes through in AWS Amplify & Web App keeps working normally.
+Open your Web App's URL in different browsers, from your phone, share with friends & family: we want to collect different user sessions to explore later!
 
-5. 
+6. Checkout out Dynatrace: Agentless real user monitoring -> Monitored web applications -> View application (a tiny button)
+7. Your Web App's performance analysis now lives under "Dynatrace -> Apps -> Web"

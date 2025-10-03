@@ -47,12 +47,17 @@ git commit -m"initial commit"
 git push origin master
 ```
 
-3. Install & set up all the required dependencies on your EC2 instance
+3. Install & set up all the required dependencies on your EC2 instance.
+   Make sure that you install Node version that is currently supported by Dynatrace's OneAgent. Otherwise, you will lack "Deep Monitoring" capabilities
+   [Node supported versions](https://docs.dynatrace.com/docs/ingest-from/technology-support/application-software/nodejs)
+   I suggest you pick the "Active LTS" [Node version](https://nodejs.org/en/about/previous-releases)
+
 ```shell
         sudo su -
         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
         . ~/.nvm/nvm.sh
-        nvm install node
+        nvm install node 22.20.0
+        nvm use 22.20.0
         node -v
         npm -v
 
@@ -69,7 +74,7 @@ git push origin master
 ```
 Check that the endpoint is talking to us & then Ctrl+C to stop the backend
 
-4. Install pm2 ![tool](https://pm2.keymetrics.io/docs/usage/quick-start/)
+1. Install pm2 ![tool](https://pm2.keymetrics.io/docs/usage/quick-start/)
 ```shell
 npm i pm2 -g
 
