@@ -17,10 +17,16 @@ Key Dynatrace components we'll use:
 ### Server-side monitoring & Observability (EC2) 🤖
 1. Dynatrace -> Apps -> "Deploy OneAgent" -> Follow the guide (don't forget to save the token) on your EC2 instance as root (```sudo su -```) -> Show deployment status (new record should pop up there). 
 Dynatrace app you'll be taken to by default (after deploying OneAgent) is "Infrastructure & Operations": a newer development forked from "Hosts classic"
+2. EC2: restart Node process with:
+   ```shell
+   pm2 delete all
+   pm2 start ecosystem.config.js
+   ```
+This way OneAgent will get access to the insides of your Web App's performance
 
-2. Apps -> Hosts Classic -> Explore our EC2 instance's performance metrics
+3. Apps -> Hosts Classic -> Explore our EC2 instance's performance metrics
     Enable "Disk analytics" extension (Add to environment) + "Net Tracer Traffic monitoring" in Hosts Classic
-3. Check out updated server monitoring experience with "Infrastructure & Monitoring" app
+4. Check out updated server monitoring experience with "Infrastructure & Monitoring" app
 
 ### Real User Monitoring (RUM) 👫
 1. Dynatrace -> Apps -> "Agentless Real User Monitoring" -> "inventorymanagement" Add web application

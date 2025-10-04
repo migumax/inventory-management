@@ -56,7 +56,7 @@ git push origin master
         sudo su -
         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
         . ~/.nvm/nvm.sh
-        nvm install node 22.20.022
+        nvm install 22.20.0
         nvm use 22.20.0
         node -v
         npm -v
@@ -65,8 +65,10 @@ git push origin master
         sudo yum install git -y
         git --version
 
-        git clone [https://github.com/migumax/inventory-management.git]
+        git clone https://github.com/migumax/inventory-management.git
         cd inventory-management
+        npm i
+        cd server/
         npm i
 
         echo "PORT=80" > .env
@@ -74,10 +76,10 @@ git push origin master
 ```
 Check that the endpoint is talking to us & then Ctrl+C to stop the backend
 
-1. Install pm2 ![tool](https://pm2.keymetrics.io/docs/usage/quick-start/) & typescript
+4. Install pm2 ![tool](https://pm2.keymetrics.io/docs/usage/quick-start/) & typescript
 ```shell
 npm i pm2 -g
-npm install typescript
+npm i typescript -g
 
 sudo env PATH=$PATH:$(which node) $(which pm2) startup systemd -u $USER --hp $(eval echo ~$USER)
 
@@ -125,17 +127,16 @@ For example,
 
 
 ### AWS Amplify (frontend CICD & hosting) 📊
-1. Services -> Amplify -> Create new App -> GitHub (source) -> Select repository + "My app is a monorepo" + "client"
-2. Advanced settings -> Add environment variable
-NEXT_PUBLIC_API_BASE_URL
-http://yourEC2IPv4
-3. Services -> API Gateway -> HTTP API -> Build -> Add Integrations & Add "prod" stage
+1. Services -> API Gateway -> HTTP API -> Build -> Add Integrations & Add "prod" stage
 HTTP + GET + http://yourEC2IPv4/dashboard
 HTTP + GET + http://yourEC2IPv4/users
 HTTP + GET + http://yourEC2IPv4/expenses
 HTTP + ANY + http://yourEC2IPv4/products
-4. Copy "Invoke URL" -> Go to Amplify -> View App -> App settings -> Environment variables -> Replace "NEXT_PUBLIC_API_BASE_URL"'s value with "Invoke URL"'s value -> Redeploy Amplify application
-5. Check the Web App in browser
+2. Services -> Amplify -> Create new App -> GitHub (source) -> Select repository + "My app is a monorepo" + "client"
+3. Advanced settings -> Add environment variable
+NEXT_PUBLIC_API_BASE_URL
+http://yourInvokeURL from API Gateway
+4. Check the Web App in browser
 
 ### AWS S3 (graphical assets storing) 📦
 1. Services -> S3 -> Create bucket -> Allow "All public access" -> Create
