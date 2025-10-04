@@ -56,7 +56,7 @@ git push origin master
         sudo su -
         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
         . ~/.nvm/nvm.sh
-        nvm install node 22.20.0
+        nvm install node 22.20.022
         nvm use 22.20.0
         node -v
         npm -v
@@ -74,9 +74,10 @@ git push origin master
 ```
 Check that the endpoint is talking to us & then Ctrl+C to stop the backend
 
-1. Install pm2 ![tool](https://pm2.keymetrics.io/docs/usage/quick-start/)
+1. Install pm2 ![tool](https://pm2.keymetrics.io/docs/usage/quick-start/) & typescript
 ```shell
 npm i pm2 -g
+npm install typescript
 
 sudo env PATH=$PATH:$(which node) $(which pm2) startup systemd -u $USER --hp $(eval echo ~$USER)
 
@@ -169,3 +170,5 @@ HTTP + ANY + http://yourEC2IPv4/products
 6. Make sure the new AWS Amplify deployment succeeded
 
 7. Explore your fully functioning Web App & share with the world 🌍
+
+8. Check logs with `pm2 logs inventory-management` while navigating across Web App's pages
